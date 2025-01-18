@@ -1,0 +1,30 @@
+<h1><%= @servico.new_record? ? 'Novo Serviço' : 'Editar Serviço' %></h1>
+
+<%= form_with(model: @servico, local: true) do |form| %>
+  <% if @servico.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@servico.errors.count, "erro") %> impedem que o serviço seja salvo:</h2>
+      <ul>
+        <% @servico.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descricao %>
+    <%= form.text_area :descricao %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', servicos_path %>
